@@ -1,0 +1,32 @@
+{
+  "name": "movie_api",
+  "version": "1.0.0",
+  "description": "Movie Library API",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^9.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elodloic/myFlix.git"
+  },
+  "keywords": [
+    "Movie",
+    "API",
+    "Library"
+  ],
+  "author": "Elod Szelenyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elodloic/myFlix/issues"
+  },
+  "homepage": "https://github.com/elodloic/myFlix#readme"
+}
