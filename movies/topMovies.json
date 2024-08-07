@@ -1,8 +1,4 @@
-const express = require('express');
-const morgan = require('morgan');
-const app = express();
-
-let topMovies = [
+[
     {
         "title": "The Shawshank Redemption",
         "rank": "1",
@@ -52,33 +48,5 @@ let topMovies = [
         "title": "Fight Club",
         "rank": "10",
         "id": "tt0137523"
-    },
-];
-
-// log requests to console
-app.use(morgan('common'));
-
-// serve static files from /public
-app.use(express.static('public'));
-  
-// endpoints
-app.get('/', (req, res) => {
-  res.send('Welcome to the myFlix API');
-});
-
-app.get('/movies', (req, res) => {
-  res.json(topMovies);
-});
-  
-
-// error handling
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
-  
-  
-// listen for requests
-app.listen(8080, () => {
-  console.log('App is listening on port 8080.');
-});
+    }
+]
