@@ -3,28 +3,88 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Movie API Documentation</title>
   </head>
   <body>
     <h1>Movie API Documentation</h1>
     <p>
-        <b>The API is still under development.</b> The following features will be supported upon release:
+        <b>The API is still under development.</b>
     </p>
-    <ul>
-        <li>The API will be a Node.js and Express application.</li>
-        <li>The API will use REST architecture, with URL endpoints corresponding to data operations.</li>
-        <li>The API will use middleware modules, such as the body-parser package for reading data from requests and morgan for logging.</li>
-        <li>The API will use a “package.json” file.</li>
-        <li>The database will be built using MongoDB.</li>
-        <li>The business logic will be modeled with Mongoose.</li>
-        <li>The API will provide movie information in JSON format.</li>
-        <li>The JavaScript code will be error-free.</li>
-        <li>The API will be tested in Postman.</li>
-        <li>The API will include user authentication and authorization code.</li>
-        <li>The API will include data validation logic.</li>
-        <li>The API will meet data security regulations.</li>
-        <li>The API source code will be deployed to a publicly accessible platform like GitHub.</li>
-        <li>The API will be deployed to Heroku.</li>
-    </ul>
+    <p>Available endpoints:</p>
+    <table>
+      <thead>
+        <th>Business Logic</th>
+        <th>URL</th>
+        <th>HTTP Method</th>
+        <th>Request body data format</th>
+        <th>Response body data format</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Return a list of all movies</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding all movie information</td>
+        </tr>
+        <tr>
+        <td>Return movie information by title</td>
+          <td>/movies/[title]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding data about a single movie</td>
+        </tr>
+        <tr>
+          <td>Return genre description by name/title</td>
+          <td>/movies/genre/[genre]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding the description of the genre</td>
+        </tr>
+        <tr>
+          <td>Return data about a director (bio, birth year, death year) by name</td>
+          <td>/movies/directors/[name]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding data about the director</td>
+        </tr>
+        <tr>
+          <td>Register new user account</td>
+          <td>/users/</td>
+          <td>POST</td>
+          <td>{"name": "[name]"}</td>
+          <td>A JSON object with the username and the user's ID</td>
+        </tr>
+        <tr>
+          <td>Update username</td>
+          <td>/users/[id]</td>
+          <td>PUT</td>
+          <td>{"name": "[name]"}</td>
+          <td>A JSON object with the updated username, the user's ID and their list of favorite movies</td>
+        </tr>
+        <tr>
+          <td>Add movie to user's favorites</td>
+          <td>/users/[id]/[movie title]</td>
+          <td>POST</td>
+          <td>None</td>
+          <td>Success- or error message</td>
+        </tr>
+        <tr>
+          <td>Remove movie from user's favorites</td>
+          <td>/users/[id]/[movie title]</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>Success- or error message</td>
+        </tr>
+        <tr>
+          <td>Remove user</td>
+          <td>/users/[id]</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>Success- or error message</td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
