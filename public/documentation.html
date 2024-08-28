@@ -50,36 +50,63 @@
           <td>A JSON object holding data about the director</td>
         </tr>
         <tr>
+          <td>Return all users</td>
+          <td>/users/</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object with all users and their information</td>
+        </tr>
+        <tr>
+          <td>Return information about a user</td>
+          <td>/users/[username]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object the user's information</td>
+        </tr>
+        <tr>
           <td>Register new user account</td>
           <td>/users/</td>
           <td>POST</td>
-          <td>{"name": "[name]"}</td>
+          <td>{
+            Username: String,<br>
+            Password: String,<br>
+            Email: String,<br>
+            Birthday: Date
+          }</td>
           <td>A JSON object with the username and the user's ID</td>
         </tr>
         <tr>
-          <td>Update username</td>
-          <td>/users/[id]</td>
+          <td>Update user data</td>
+          <td>/users/[username]</td>
           <td>PUT</td>
-          <td>{"name": "[name]"}</td>
+          <td>{
+            Username: String,
+            (required)<br>
+            Password: String,
+            (required)<br>
+            Email: String,
+            (required)<br>
+            Birthday: Date
+          }</td>
           <td>A JSON object with the updated username, the user's ID and their list of favorite movies</td>
         </tr>
         <tr>
           <td>Add movie to user's favorites</td>
-          <td>/users/[id]/[movie title]</td>
+          <td>/users/[username]/movies/[movie ID]</td>
           <td>POST</td>
           <td>None</td>
-          <td>Success- or error message</td>
+          <td>A JSON object with the user's ID and their favorite movies list</td>
         </tr>
         <tr>
           <td>Remove movie from user's favorites</td>
-          <td>/users/[id]/[movie title]</td>
+          <td>/users/[username]/movies/[movie ID]</td>
           <td>DELETE</td>
           <td>None</td>
-          <td>Success- or error message</td>
+          <td>A JSON object with the user's ID and their favorite movies list</td>
         </tr>
         <tr>
           <td>Remove user</td>
-          <td>/users/[id]</td>
+          <td>/users/[username]</td>
           <td>DELETE</td>
           <td>None</td>
           <td>Success- or error message</td>
