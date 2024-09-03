@@ -33,7 +33,7 @@ require('./passport');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the myFlix API! Please see /documentation.html for more information.');
+  res.send('Welcome to the MovieBase API! Please see /documentation.html for more information.');
 });
 
 /* GET USERS (future admin feature)
