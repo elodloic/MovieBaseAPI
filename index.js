@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS setup
 const cors = require("cors");
-let allowedOrigins = ["http://localhost:8080"];
+let allowedOrigins = ["*"];
 app.use(
   cors({
     origin: (origin, callback) => {
