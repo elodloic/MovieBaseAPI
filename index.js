@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 const cors = require("cors");
 let allowedOrigins = [
   "http://localhost:1234",
+  "http://localhost:4200",
   "https://projectmoviebase.netlify.app",
 ];
 app.use(
