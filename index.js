@@ -23,7 +23,7 @@ let allowedOrigins = [
   "http://localhost:1234",
   "http://localhost:4200",
   "https://projectmoviebase.netlify.app",
-  "https://elodloic.github.io/MovieBase-Angular-client",
+  "https://elodloic.github.io",
 ];
 app.use(
   cors({
