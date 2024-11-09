@@ -55,9 +55,9 @@ require("./passport");
 app.use(express.static("public"));
 
 /**
- * @route GET /
- * @description Root endpoint that displays a welcome message.
- * @returns {string} Welcome message with a link to documentation.
+ * @route {GET} /
+ * @name Root endpoint
+ * @description Displays welcome message with a link to documentation.
  */
 app.get("/", (req, res) => {
   res.send(
@@ -79,11 +79,11 @@ app.get('/users', passport.authenticate('jwt', { session: false }), async (req, 
 */
 
 /**
- * @route GET /users/:Username
- * @description Get a user by their username.
+ * @route {GET} /users/{username}
+ * @name Return information about the logged in user
  * @param {string} Username - The username of the user.
- * @returns {Object} The user object if found, otherwise an error message.
- * @access Protected (JWT authentication required)
+ * @description Returns user data as a JSON object if found, otherwise an error message.
+ * @authentication JWT authentication required
  */
 app.get(
   "/users/:Username",
@@ -105,13 +105,13 @@ app.get(
 );
 
 /**
- * @route POST /users
- * @description Create a new user.
- * @body {string} Username - The username of the new user (must be at least 5 characters).
- * @body {string} Password - The password of the new user.
- * @body {string} Email - The email of the new user.
- * @body {string} [Birthday] - The birthday of the new user (optional).
- * @returns {Object} The newly created user object or an error message.
+ * @route {POST} /users
+ * @name Create a new user
+ * @bodyparam {string} Username - The username of the new user (must be at least 5 characters).
+ * @bodyparam {string} Password - The password of the new user.
+ * @bodyparam {string} Email - The email of the new user.
+ * @bodyparam {date} Birthday - The birthday of the new user.
+ * @description Returns a JSON object with the username and the user's ID or an error message.
  */
 app.post(
   "/users",
@@ -162,15 +162,15 @@ app.post(
 );
 
 /**
- * @route PUT /users/:Username
- * @description Update a user's information.
- * @param {string} Username - The username of the user to update.
- * @body {string} [Username] - The new username for the user (optional).
- * @body {string} [Password] - The new password for the user (optional).
- * @body {string} [Email] - The new email for the user (optional).
- * @body {string} [Birthday] - The new birthday for the user (optional).
- * @returns {Object} The updated user object or an error message.
- * @access Protected (JWT authentication required)
+ * @route {PUT} /users/:Username
+ * @name Update user data
+ * @routeparam {string} Username - The username of the user to update.
+ * @bodyparam {string} [Username] - The new username for the user (optional).
+ * @bodyparam {string} [Password] - The new password for the user (optional).
+ * @bodyparam {string} [Email] - The new email for the user (optional).
+ * @bodyparam {date} [Birthday] - The new birthday for the user (optional).
+ * @description Returns a JSON object with the updated username, the user's ID and their list of favorite movies.
+ * @authentication JWT authentication required
  */ app.put(
   "/users/:Username",
   passport.authenticate("jwt", { session: false }),
@@ -232,12 +232,12 @@ app.post(
 );
 
 /**
- * @route POST /users/:Username/movies/:MovieID
- * @description Add a movie to a user's list of favorite movies.
- * @param {string} Username - The username of the user.
- * @param {string} MovieID - The ID of the movie.
- * @returns {object} Updated user's favorite movies.
- * @access Protected
+ * @route {POST} /users/:Username/movies/:MovieID
+ * @name Add movie to user's favorites
+ * @routeparam {string} Username - The username of the user.
+ * @routeparam {string} MovieID - The ID of the movie.
+ * @descripton Returns a JSON object with the user's ID and their favorite movies list
+ * @authentication JWT authentication required
  */
 app.post(
   "/users/:Username/movies/:MovieID",
@@ -263,12 +263,12 @@ app.post(
 );
 
 /**
- * @route DELETE /users/:Username/movies/:MovieID
- * @description Remove a movie from a user's list of favorite movies.
- * @param {string} Username - The username of the user.
- * @param {string} MovieID - The ID of the movie.
- * @returns {object} Updated user's favorite movies.
- * @access Protected
+ * @route {DELETE} /users/:Username/movies/:MovieID
+ * @name Remove movie from user's favorites
+ * @routeparam {string} Username - The username of the user.
+ * @routeparam {string} MovieID - The ID of the movie.
+ * @description Returns a JSON object with the user's ID and their favorite movies list
+ * @authentication JWT authentication required
  */
 app.delete(
   "/users/:Username/movies/:MovieID",
@@ -296,11 +296,11 @@ app.delete(
 );
 
 /**
- * @route DELETE /users/:Username
- * @description Delete a user by their username.
- * @param {string} Username - The username of the user to delete.
- * @returns {string} Success message or error message.
- * @access Protected
+ * @route {DELETE} /users/:Username
+ * @name Remove user
+ * @routeparam {string} Logged in user's username
+ * @description Returns a success message or error message.
+ * @authentication JWT authentication required
  */
 app.delete(
   "/users/:Username",
@@ -326,10 +326,10 @@ app.delete(
 );
 
 /**
- * @route GET /movies
- * @description Get a list of all movies.
- * @returns {object[]} Array of movie objects.
- * @access Protected
+ * @route {GET} /movies
+ * @name Get a list of all movies
+ * @description Returns a JSON object holding all movie information
+ * @authentication JWT authentication required
  */
 app.get(
   "/movies",
@@ -347,11 +347,11 @@ app.get(
 );
 
 /**
- * @route GET /movies/:Title
- * @description Get a movie by its title.
- * @param {string} Title - The title of the movie.
- * @returns {object} Movie object.
- * @access Protected
+ * @route {GET} /movies/:Title
+ * @name Get movie information by its title
+ * @routeparam {string} Title - The title of the movie.
+ * @description Returns a JSON object holding data about a single movie
+ * @authentication JWT authentication required
  */
 app.get(
   "/movies/:Title",
@@ -369,11 +369,11 @@ app.get(
 );
 
 /**
- * @route GET /movies/genre/:Name
- * @description Get movies by genre name.
- * @param {string} Name - The name of the genre.
- * @returns {object} Genre object containing movie information.
- * @access Protected
+ * @route {GET} /movies/genre/:Name
+ * @name Get genre description by name/title
+ * @routeparam {string} Name - The name of the genre.
+ * @description Returns a JSON object holding the description of the genre
+ * @authentication JWT authentication required
  */
 app.get(
   "/movies/genre/:Genre",
@@ -392,11 +392,11 @@ app.get(
 );
 
 /**
- * @route GET /movies/directors/:Name
- * @description Get movies by director name.
- * @param {string} Name - The name of the director.
- * @returns {object} Director object containing movie information.
- * @access Protected
+ * @route {GET} /movies/directors/:Name
+ * @name Return data about a director (bio, birth year, death year)
+ * @routeparam {string} Name - The name of the director.
+ * @description Returns a JSON object holding data about the director
+ * @authentication JWT authentication required
  */
 app.get(
   "/movies/directors/:Director",
