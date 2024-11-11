@@ -4,7 +4,6 @@
  */
 
 const mongoose = require("mongoose");
-// mongoose.connect('mongodb://localhost:27017/myflixdb', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -23,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /**
- * CORS configuration.
+ * @constant {function} cors
  * @description Configures the CORS policy for the application.
  */
 const cors = require("cors");
@@ -55,9 +54,9 @@ require("./passport");
 app.use(express.static("public"));
 
 /**
- * @route {GET} /
  * @name Root endpoint
  * @description Displays welcome message with a link to documentation.
+ * @route {GET} /
  */
 app.get("/", (req, res) => {
   res.send(
@@ -65,23 +64,10 @@ app.get("/", (req, res) => {
   );
 });
 
-/* GET USERS (future admin feature)
-app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Users.find()
-    .then((users) => {
-      res.status(201).json(users);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
-*/
-
 /**
- * @route {GET} /users/{username}
- * @name Return information about the logged in user
- * @param {string} Username - The username of the user.
+ * @route {GET} /users/:Username
+ * @name Get user data
+ * @routeparam {string} :Username - The username of the user
  * @description Returns user data as a JSON object if found, otherwise an error message.
  * @authentication JWT authentication required
  */
@@ -107,10 +93,10 @@ app.get(
 /**
  * @route {POST} /users
  * @name Create a new user
- * @bodyparam {string} Username - The username of the new user (must be at least 5 characters).
- * @bodyparam {string} Password - The password of the new user.
- * @bodyparam {string} Email - The email of the new user.
- * @bodyparam {date} Birthday - The birthday of the new user.
+ * @bodyparam {string} Username - The username of the new user (must be at least 5 characters)
+ * @bodyparam {string} Password - The password of the new user
+ * @bodyparam {string} Email - The email of the new user
+ * @bodyparam {date} Birthday - The birthday of the new user
  * @description Returns a JSON object with the username and the user's ID or an error message.
  */
 app.post(
@@ -164,11 +150,11 @@ app.post(
 /**
  * @route {PUT} /users/:Username
  * @name Update user data
- * @routeparam {string} Username - The username of the user to update.
- * @bodyparam {string} [Username] - The new username for the user (optional).
- * @bodyparam {string} [Password] - The new password for the user (optional).
- * @bodyparam {string} [Email] - The new email for the user (optional).
- * @bodyparam {date} [Birthday] - The new birthday for the user (optional).
+ * @routeparam {string} :Username - The username of the user to update
+ * @bodyparam {string} [Username] - The new username for the user
+ * @bodyparam {string} [Password] - The new password for the user
+ * @bodyparam {string} [Email] - The new email for the user
+ * @bodyparam {date} [Birthday] - The new birthday for the user
  * @description Returns a JSON object with the updated username, the user's ID and their list of favorite movies.
  * @authentication JWT authentication required
  */ app.put(
@@ -233,10 +219,10 @@ app.post(
 
 /**
  * @route {POST} /users/:Username/movies/:MovieID
- * @name Add movie to user's favorites
- * @routeparam {string} Username - The username of the user.
- * @routeparam {string} MovieID - The ID of the movie.
- * @descripton Returns a JSON object with the user's ID and their favorite movies list
+ * @name Add movie to favorites
+ * @routeparam {string} :Username - The username of the user
+ * @routeparam {string} :MovieID - The ID of the movie
+ * @description Returns a JSON object with the user's ID and their favorite movies list
  * @authentication JWT authentication required
  */
 app.post(
@@ -264,9 +250,9 @@ app.post(
 
 /**
  * @route {DELETE} /users/:Username/movies/:MovieID
- * @name Remove movie from user's favorites
- * @routeparam {string} Username - The username of the user.
- * @routeparam {string} MovieID - The ID of the movie.
+ * @name Remove movie from favorites
+ * @routeparam {string} :Username - The username of the user
+ * @routeparam {string} :MovieID - The ID of the movie
  * @description Returns a JSON object with the user's ID and their favorite movies list
  * @authentication JWT authentication required
  */
@@ -298,7 +284,7 @@ app.delete(
 /**
  * @route {DELETE} /users/:Username
  * @name Remove user
- * @routeparam {string} Logged in user's username
+ * @routeparam {string} :Username - Logged in user's username
  * @description Returns a success message or error message.
  * @authentication JWT authentication required
  */
@@ -348,9 +334,9 @@ app.get(
 
 /**
  * @route {GET} /movies/:Title
- * @name Get movie information by its title
- * @routeparam {string} Title - The title of the movie.
- * @description Returns a JSON object holding data about a single movie
+ * @name Get movie information
+ * @routeparam {string} :Title - The title of the movie
+ * @description Returns a JSON object holding data about a single movie.
  * @authentication JWT authentication required
  */
 app.get(
@@ -370,8 +356,8 @@ app.get(
 
 /**
  * @route {GET} /movies/genre/:Name
- * @name Get genre description by name/title
- * @routeparam {string} Name - The name of the genre.
+ * @name Get genre description
+ * @routeparam {string} :Name - The name of the genre
  * @description Returns a JSON object holding the description of the genre
  * @authentication JWT authentication required
  */
@@ -393,9 +379,9 @@ app.get(
 
 /**
  * @route {GET} /movies/directors/:Name
- * @name Return data about a director (bio, birth year, death year)
- * @routeparam {string} Name - The name of the director.
- * @description Returns a JSON object holding data about the director
+ * @name Get data about a director
+ * @routeparam {string} :Name - The name of the director
+ * @description Returns a JSON object holding data about the director.
  * @authentication JWT authentication required
  */
 app.get(

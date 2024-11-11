@@ -98,7 +98,7 @@
 
         
             
-<h4 class="name" id="Add a movie to a user's list of favorite movies."><span class="type-signature">(route) </span>Add a movie to a user's list of favorite movies.<span class="type-signature"></span></h4>
+<h4 class="name" id="Add movie to favorites"><span class="type-signature">(route) </span>Add movie to favorites<span class="type-signature"></span></h4>
 
 
 
@@ -112,9 +112,34 @@
                             <td class="name last">/users/:Username/movies/:MovieID</td>
                             </tr>
                             </table>
-                            undefined
+                            Returns a JSON object with the user's ID and their favorite movies list
                           <h5>Authentication</h5>
                           <p>JWT authentication required</p>
+                            <h5>Route Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">:Username</td>
+            <td class="type">string</td>
+            
+            
+            <td class="description last">The username of the user</td>
+          </tr><tr>
+            <td class="name">:MovieID</td>
+            <td class="type">string</td>
+            
+            
+            <td class="description last">The ID of the movie</td>
+          </tr>
+          </table>
 </div>
 
 
@@ -152,7 +177,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line234">line 234</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line220">line 220</a>
     </li></ul></dd>
     
 
@@ -201,25 +226,25 @@
             <td class="type">string</td>
             
             
-            <td class="description last">The username of the new user (must be at least 5 characters).</td>
+            <td class="description last">The username of the new user (must be at least 5 characters)</td>
           </tr><tr>
             <td class="name">Password</td>
             <td class="type">string</td>
             
             
-            <td class="description last">The password of the new user.</td>
+            <td class="description last">The password of the new user</td>
           </tr><tr>
             <td class="name">Email</td>
             <td class="type">string</td>
             
             
-            <td class="description last">The email of the new user.</td>
+            <td class="description last">The email of the new user</td>
           </tr><tr>
             <td class="name">Birthday</td>
             <td class="type">date</td>
             
             
-            <td class="description last">The birthday of the new user.</td>
+            <td class="description last">The birthday of the new user</td>
           </tr>
           </table>
 </div>
@@ -259,7 +284,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line107">line 107</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line93">line 93</a>
     </li></ul></dd>
     
 
@@ -277,79 +302,7 @@
 
         
             
-<h4 class="name" id="Delete a user by their username."><span class="type-signature">(route) </span>Delete a user by their username.<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">DELETE</td>
-                            <td class="name last">/users/:Username</td>
-                            </tr>
-                            </table>
-                            undefined
-                          <h5>Authentication</h5>
-                          <p>JWT authentication required</p>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line298">line 298</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="Get a list of all movies."><span class="type-signature">(route) </span>Get a list of all movies.<span class="type-signature"></span></h4>
+<h4 class="name" id="Get a list of all movies"><span class="type-signature">(route) </span>Get a list of all movies<span class="type-signature"></span></h4>
 
 
 
@@ -363,7 +316,7 @@
                             <td class="name last">/movies</td>
                             </tr>
                             </table>
-                            undefined
+                            Returns a JSON object holding all movie information
                           <h5>Authentication</h5>
                           <p>JWT authentication required</p>
 </div>
@@ -403,7 +356,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line328">line 328</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line314">line 314</a>
     </li></ul></dd>
     
 
@@ -421,79 +374,7 @@
 
         
             
-<h4 class="name" id="Get a movie by its title."><span class="type-signature">(route) </span>Get a movie by its title.<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">GET</td>
-                            <td class="name last">/movies/:Title</td>
-                            </tr>
-                            </table>
-                            undefined
-                          <h5>Authentication</h5>
-                          <p>JWT authentication required</p>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line349">line 349</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="Get movies by director name."><span class="type-signature">(route) </span>Get movies by director name.<span class="type-signature"></span></h4>
+<h4 class="name" id="Get data about a director"><span class="type-signature">(route) </span>Get data about a director<span class="type-signature"></span></h4>
 
 
 
@@ -507,9 +388,28 @@
                             <td class="name last">/movies/directors/:Name</td>
                             </tr>
                             </table>
-                            undefined
+                            Returns a JSON object holding data about the director.
                           <h5>Authentication</h5>
                           <p>JWT authentication required</p>
+                            <h5>Route Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">:Name</td>
+            <td class="type">string</td>
+            
+            
+            <td class="description last">The name of the director</td>
+          </tr>
+          </table>
 </div>
 
 
@@ -547,7 +447,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line394">line 394</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line380">line 380</a>
     </li></ul></dd>
     
 
@@ -565,7 +465,7 @@
 
         
             
-<h4 class="name" id="Get movies by genre name."><span class="type-signature">(route) </span>Get movies by genre name.<span class="type-signature"></span></h4>
+<h4 class="name" id="Get genre description"><span class="type-signature">(route) </span>Get genre description<span class="type-signature"></span></h4>
 
 
 
@@ -579,9 +479,28 @@
                             <td class="name last">/movies/genre/:Name</td>
                             </tr>
                             </table>
-                            undefined
+                            Returns a JSON object holding the description of the genre
                           <h5>Authentication</h5>
                           <p>JWT authentication required</p>
+                            <h5>Route Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">:Name</td>
+            <td class="type">string</td>
+            
+            
+            <td class="description last">The name of the genre</td>
+          </tr>
+          </table>
 </div>
 
 
@@ -619,7 +538,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line371">line 371</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line357">line 357</a>
     </li></ul></dd>
     
 
@@ -637,7 +556,189 @@
 
         
             
-<h4 class="name" id="Remove a movie from a user's list of favorite movies."><span class="type-signature">(route) </span>Remove a movie from a user's list of favorite movies.<span class="type-signature"></span></h4>
+<h4 class="name" id="Get movie information"><span class="type-signature">(route) </span>Get movie information<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <h5>Route:</h5>
+                            <table class="params">
+                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
+                            <tr>
+                            <td class="type">GET</td>
+                            <td class="name last">/movies/:Title</td>
+                            </tr>
+                            </table>
+                            Returns a JSON object holding data about a single movie.
+                          <h5>Authentication</h5>
+                          <p>JWT authentication required</p>
+                            <h5>Route Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">:Title</td>
+            <td class="type">string</td>
+            
+            
+            <td class="description last">The title of the movie</td>
+          </tr>
+          </table>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line335">line 335</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="Get user data"><span class="type-signature">(route) </span>Get user data<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <h5>Route:</h5>
+                            <table class="params">
+                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
+                            <tr>
+                            <td class="type">GET</td>
+                            <td class="name last">/users/:Username</td>
+                            </tr>
+                            </table>
+                            Returns user data as a JSON object if found, otherwise an error message.
+                          <h5>Authentication</h5>
+                          <p>JWT authentication required</p>
+                            <h5>Route Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">:Username</td>
+            <td class="type">string</td>
+            
+            
+            <td class="description last">The username of the user</td>
+          </tr>
+          </table>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="Remove movie from favorites"><span class="type-signature">(route) </span>Remove movie from favorites<span class="type-signature"></span></h4>
 
 
 
@@ -651,9 +752,34 @@
                             <td class="name last">/users/:Username/movies/:MovieID</td>
                             </tr>
                             </table>
-                            undefined
+                            Returns a JSON object with the user's ID and their favorite movies list
                           <h5>Authentication</h5>
                           <p>JWT authentication required</p>
+                            <h5>Route Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">:Username</td>
+            <td class="type">string</td>
+            
+            
+            <td class="description last">The username of the user</td>
+          </tr><tr>
+            <td class="name">:MovieID</td>
+            <td class="type">string</td>
+            
+            
+            <td class="description last">The ID of the movie</td>
+          </tr>
+          </table>
 </div>
 
 
@@ -691,7 +817,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line265">line 265</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line251">line 251</a>
     </li></ul></dd>
     
 
@@ -709,7 +835,7 @@
 
         
             
-<h4 class="name" id="Return information about the logged in user"><span class="type-signature">(route) </span>Return information about the logged in user<span class="type-signature"></span></h4>
+<h4 class="name" id="Remove user"><span class="type-signature">(route) </span>Remove user<span class="type-signature"></span></h4>
 
 
 
@@ -719,13 +845,32 @@
                             <table class="params">
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
-                            <td class="type">GET</td>
-                            <td class="name last">/users/{username}</td>
+                            <td class="type">DELETE</td>
+                            <td class="name last">/users/:Username</td>
                             </tr>
                             </table>
-                            Returns user data as a JSON object if found, otherwise an error message.
+                            Returns a success message or error message.
                           <h5>Authentication</h5>
                           <p>JWT authentication required</p>
+                            <h5>Route Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">:Username</td>
+            <td class="type">string</td>
+            
+            
+            <td class="description last">Logged in user's username</td>
+          </tr>
+          </table>
 </div>
 
 
@@ -763,7 +908,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line81">line 81</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line284">line 284</a>
     </li></ul></dd>
     
 
@@ -833,7 +978,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line57">line 57</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -862,7 +1007,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">PUT</td>
-                            <td class="name last">/users/{Username}</td>
+                            <td class="name last">/users/:Username</td>
                             </tr>
                             </table>
                             Returns a JSON object with the updated username, the user's ID and their list of favorite movies.
@@ -884,25 +1029,25 @@
             <td class="type">string</td>
             <td class="attributes">optional</td>
             
-            <td class="description last">The new username for the user (optional).</td>
+            <td class="description last">The new username for the user</td>
           </tr><tr>
             <td class="name">Password</td>
             <td class="type">string</td>
             <td class="attributes">optional</td>
             
-            <td class="description last">The new password for the user (optional).</td>
+            <td class="description last">The new password for the user</td>
           </tr><tr>
             <td class="name">Email</td>
             <td class="type">string</td>
             <td class="attributes">optional</td>
             
-            <td class="description last">The new email for the user (optional).</td>
+            <td class="description last">The new email for the user</td>
           </tr><tr>
             <td class="name">Birthday</td>
             <td class="type">date</td>
             <td class="attributes">optional</td>
             
-            <td class="description last">The new birthday for the user (optional).</td>
+            <td class="description last">The new birthday for the user</td>
           </tr>
           </table>
                             <h5>Route Parameters:</h5>
@@ -917,11 +1062,11 @@
               </tr>
             </thead>
             <tr>
-            <td class="name">Username</td>
+            <td class="name">:Username</td>
             <td class="type">string</td>
             
             
-            <td class="description last">The username of the user to update.</td>
+            <td class="description last">The username of the user to update</td>
           </tr>
           </table>
 </div>
@@ -961,7 +1106,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line164">line 164</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -979,13 +1124,46 @@
 
         
             
-<h4 class="name" id="cors"><span class="type-signature">(constant) </span>cors<span class="type-signature"></span></h4>
+<h4 class="name" id="User login"><span class="type-signature">(route) </span>User login<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    Configures the CORS policy for the application.
+    <h5>Route:</h5>
+                            <table class="params">
+                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
+                            <tr>
+                            <td class="type">POST</td>
+                            <td class="name last">/login</td>
+                            </tr>
+                            </table>
+                            Generates JWT token for the user. Example: /login?Username=[username]&Password=[password]
+                            <h5>Query Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">:Username</td>
+            <td class="type">String</td>
+            
+            
+            <td class="description last">The username of the user</td>
+          </tr><tr>
+            <td class="name">:Password</td>
+            <td class="type">String</td>
+            
+            
+            <td class="description last">The password of the user</td>
+          </tr>
+          </table>
 </div>
 
 
@@ -1023,7 +1201,79 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line29">line 29</a>
+        <a href="auth.js.html">auth.js</a>, <a href="auth.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="cors"><span class="type-signature">(constant) </span>cors<span class="type-signature"> :function</span></h4>
+
+
+
+
+<div class="description">
+    Configures the CORS policy for the application.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -1057,13 +1307,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html">Add a movie to a user's list of favorite movies.</a></li><li><a href="global.html">Create a new user</a></li><li><a href="global.html">Delete a user by their username.</a></li><li><a href="global.html">Get a list of all movies.</a></li><li><a href="global.html">Get a movie by its title.</a></li><li><a href="global.html">Get movies by director name.</a></li><li><a href="global.html">Get movies by genre name.</a></li><li><a href="global.html">Remove a movie from a user's list of favorite movies.</a></li><li><a href="global.html">Return information about the logged in user</a></li><li><a href="global.html">Root endpoint</a></li><li><a href="global.html">Update user data</a></li><li><a href="global.html#cors">cors</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html">Add movie to favorites</a></li><li><a href="global.html">Create a new user</a></li><li><a href="global.html">Get a list of all movies</a></li><li><a href="global.html">Get data about a director</a></li><li><a href="global.html">Get genre description</a></li><li><a href="global.html">Get movie information</a></li><li><a href="global.html">Get user data</a></li><li><a href="global.html">Remove movie from favorites</a></li><li><a href="global.html">Remove user</a></li><li><a href="global.html">Root endpoint</a></li><li><a href="global.html">Update user data</a></li><li><a href="global.html">User login</a></li><li><a href="global.html#cors">cors</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sat Nov 09 2024 16:38:06 GMT+0200 (Osteuropäische Normalzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Nov 11 2024 19:40:14 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
