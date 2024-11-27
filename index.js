@@ -31,7 +31,7 @@ let allowedOrigins = [
   "http://localhost:4200",
   "https://projectmoviebase.netlify.app",
   "https://elodloic.github.io",
-  "http://18.197.181.103",
+  "http://78.139.39.247",
 ];
 app.use(
   cors({
