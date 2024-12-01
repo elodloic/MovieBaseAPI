@@ -3,6 +3,23 @@
  * @description Main entry point for the MovieBase API server. Sets up routes, middleware, and configurations.
  */
 
+const {
+  S3Client,
+  ListObjectsV2Command,
+  PutObjectCommand,
+  GetObjectCommand,
+} = require("@aws-sdk/client-s3");
+
+const s3Client = new S3Client({
+  region: "us-east-1",
+  endpoint: "http://127.0.0.1:4566",
+  forcePathStyle: true,
+});
+
+const fileUpload = require("express-fileupload");
+
+const fs = require("fs");
+
 const mongoose = require("mongoose");
 mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
@@ -32,6 +49,7 @@ let allowedOrigins = [
   "https://projectmoviebase.netlify.app",
   "https://elodloic.github.io",
   "http://movie-base-client.s3-website.eu-central-1.amazonaws.com",
+  "null",
 ];
 app.use(
   cors({
@@ -400,6 +418,86 @@ app.get(
       });
   }
 );
+
+/**
+ * @route {GET} /images
+ * @name List uploaded images
+ * @description Lists image files present in the S3 bucket.
+ */
+app.get("/images", (req, res) => {
+  listObjectsParams = {
+    Bucket: "imagebucket",
+  };
+  s3Client
+    .send(new ListObjectsV2Command(listObjectsParams))
+    .then((listObjectsResponse) => {
+      res.send(listObjectsResponse);
+    });
+});
+
+/**
+ * @route {POST} /images
+ * @name Upload an image
+ * @bodyparam {file} image - The image file to upload
+ * @description Uploads an image file to the S3 bucket and returns the file URL or an error message.
+ */
+app.use(fileUpload());
+app.post("/images", async (req, res) => {
+  const file = req.files.image;
+  const fileName = `${Date.now()}-${file.name}`;
+  const uploadParams = {
+    Bucket: "imagebucket",
+    Key: fileName,
+    Body: file.data,
+    ContentType: file.mimetype,
+  };
+
+  try {
+    const data = await s3Client.send(new PutObjectCommand(uploadParams));
+    const fileUrl = `http://${uploadParams.Bucket}.s3.amazonaws.com/${fileName}`;
+    res.status(201).send({ message: "File uploaded successfully", fileUrl });
+  } catch (error) {
+    console.error("Error uploading file:", error);
+    res.status(500).send("Error uploading file.");
+  }
+});
+
+/**
+ * @route {GET} /images/:fileName
+ * @name Retrieve image
+ * @routeparam {string} :fileName - The name of the file in the S3 bucket
+ * @description Fetches and serves an image file from the S3 bucket.
+ */
+app.get("/images/:fileName", async (req, res) => {
+  const { fileName } = req.params;
+
+  const getObjectParams = {
+    Bucket: "imagebucket",
+    Key: fileName,
+  };
+
+  try {
+    // Using AWS SDK to get the object
+    const data = await s3Client.send(new GetObjectCommand(getObjectParams));
+
+    // Set headers based on file type
+    res.setHeader(
+      "Content-Type",
+      data.ContentType || "application/octet-stream"
+    );
+
+    // Pipe the data stream to the response
+    data.Body.pipe(res);
+  } catch (error) {
+    console.error("Error retrieving file:", error);
+
+    if (error.name === "NoSuchKey") {
+      res.status(404).send("File not found.");
+    } else {
+      res.status(500).send("Error retrieving the file.");
+    }
+  }
+});
 
 // log requests to console
 app.use(morgan("common"));
