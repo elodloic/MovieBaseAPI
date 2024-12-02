@@ -11,9 +11,7 @@ const {
 } = require("@aws-sdk/client-s3");
 
 const s3Client = new S3Client({
-  region: "us-east-1",
-  endpoint: "http://127.0.0.1:4566",
-  forcePathStyle: true,
+  region: "eu-central-1",
 });
 
 const fileUpload = require("express-fileupload");
@@ -49,7 +47,6 @@ let allowedOrigins = [
   "https://projectmoviebase.netlify.app",
   "https://elodloic.github.io",
   "http://movie-base-client.s3-website.eu-central-1.amazonaws.com",
-  "null",
 ];
 app.use(
   cors({
@@ -426,7 +423,7 @@ app.get(
  */
 app.get("/images", (req, res) => {
   listObjectsParams = {
-    Bucket: "imagebucket",
+    Bucket: "image-bucket-tests",
   };
   s3Client
     .send(new ListObjectsV2Command(listObjectsParams))
@@ -446,7 +443,7 @@ app.post("/images", async (req, res) => {
   const file = req.files.image;
   const fileName = `${Date.now()}-${file.name}`;
   const uploadParams = {
-    Bucket: "imagebucket",
+    Bucket: "image-bucket-tests",
     Key: fileName,
     Body: file.data,
     ContentType: file.mimetype,
@@ -472,7 +469,7 @@ app.get("/images/:fileName", async (req, res) => {
   const { fileName } = req.params;
 
   const getObjectParams = {
-    Bucket: "imagebucket",
+    Bucket: "image-bucket-tests",
     Key: fileName,
   };
 
